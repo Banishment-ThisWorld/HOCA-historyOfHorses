@@ -1,0 +1,1220 @@
+/* overall fade in caption of the website name, then lift up, with the header and four image boxes that can zoom in with the mouse over it, click it will show a new cover */
+html,body{
+  width: 375%;
+  height: 100%;
+  margin: 0;
+  overflow: auto;
+}
+/* only firefox + IE/Edge */
+/* html,body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+} */
+
+*, *::after, *::before{
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: SAOUI;
+  src: url("SAOUI-Regular.ttf") format('truetype');
+}
+
+.header{
+  position: fixed;
+  text-align: center;
+  display: flex;
+  height: 8%;
+  left:33%;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  transition: background-image 1s ease-in-out;
+  /* background-image: url("hundredHorse.jpg"); */
+  /* background-position: 50% 80%; */
+}
+
+.footer{
+  text-align: center;
+  display: flex;
+  height: 5%;
+  left:33%;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  transition: background-image 1s ease-in-out;
+  /* background-image: url("hundredHorse.jpg"); */
+  background-position: 5 left0% 80%;
+  background-color: #FAEBD7;
+  background-image: url("scroll.jpg");
+}
+
+.headerPic{
+  text-align: center;
+  display: flex;
+  height: 8%;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  transition: background-image 1s ease-in-out;
+  background-image: url("scroll.jpg");
+  background-position: 50% 0%;
+  /* the three lines above actually confuse me for a long time as I cannot find the way to center the title in the header, I tried many ways including vertical-align, flex and something else but nothing works so the only way for me is to find a solution online and I came up with this and by using display flex can the header adapt all the adjustment to the page */
+}
+
+/* .header:hover{
+  background-image: url("header.jpg");
+  background-position: 0 48%;
+} */
+
+/* .headerimg{
+background-image: url("nebula.jpg");
+background-color: purple;
+height: 8%;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
+} */
+
+.content{
+  height: 87%;
+  background-color: pink;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+::selection{
+  color: black  ;
+  background-color: lightgrey;
+}
+
+h1.headertext{
+  margin: 0;
+  font-family: SAOUI;
+  text-shadow: 0 0 6px #FFFF55, 0 0 9px #FF3333;
+  color: #A52A2A;
+  /* here I met with problem that to deal with the margin above the header, what I first tried is to put margin:0 in the .header but it didn't work, so I search for the solution and find out that it is a common problem and the solution is just to add the clear the margin in h1 */
+}
+
+.picture {
+  position: relative;
+  width: 6.66666%;
+  height:100%;
+  overflow: hidden;
+}
+
+#one {
+  position: absolute;
+  transform: translate(0, -15%);
+}
+
+#two {
+  position: absolute;
+  transform: translate(-25%, -15%);
+}
+
+#three {
+  position: absolute;
+  transform: translate(-10%, 0%);
+  width:5%;
+  height:auto;
+}
+
+#four {
+  position: absolute;
+  transform: translate(80%, 50%) scale(3);
+}
+
+.pic img {
+  /* -webkit-transition: 0.6s ease; */
+  transition: 0.6s ease;
+}
+
+.picture:hover .pic img {
+  /* -webkit-transform: scale(1.2); */
+  transform: scale(1.2);
+}
+
+/* title */
+.captionTitle{
+  /* position: absolute; */
+  font-size: 80px;
+  font-family: "LiGothic", "FangSong", Arial, serif;
+  opacity: 1;
+  z-index: 1;
+  display: flex;
+  /* justify-content: center; */
+  text-align: center;
+  /* vertical-align: middle; */
+  text-decoration: none;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  text-shadow: 0 0 6px gold, 0 0 9px SandyBrown;
+  color: #A52A2A;
+}
+
+.captionTitle2{
+  /* position: absolute; */
+  font-size: 25px;
+  font-family: Georgia, serif;
+  opacity: 1;
+  z-index: 1;
+  display: flex;
+  /* justify-content: center; */
+  text-align: center;
+  /* vertical-align: middle; */
+  text-decoration: none;
+  text-shadow: 0 0 6px gold, 0 0 9px SandyBrown;
+  color: #A52A2A;
+}
+
+#title {
+  background-color: #FAEBD7;
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+  align-items: center;
+  background-image: url("hundredHorse.jpg");
+  background-position: 0%;
+}
+
+/* preface */
+
+#preface{
+  background-color: #FAEBD7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("hundredHorse.jpg");
+  background-position: 28%;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#preface:hover .prefaceWord{
+  opacity: 1;
+}
+
+.prefaceWord{
+  background-color: rgba(	240,230,140,0.2);
+  position: absolute;
+  color: #fff
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 4px 20px 4px 15px;
+  opacity: 0;
+  transition: all 300ms ease-out;
+  font-size: 50px;
+  word-spacing: 10px;
+  font-family: SAOUI;
+  text-shadow: 0 0 6px #FFFF55, 0 0 9px #FF3333;
+  color: #A52A2A;
+}
+
+/* transition1 */
+#transition1{
+  background-color: #FAEBD7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("hundredHorse.jpg");
+  background-position: 56.15%;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#transition1:hover .transition1Word{
+  opacity: 1;
+}
+
+.transition1Word{
+  background-color: rgba(	240,230,140,0.2);
+  position: absolute;
+  color: #fff
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 4px 20px 4px 15px;
+  opacity: 0;
+  transition: all 300ms ease-out;
+  font-size: 50px;
+  word-spacing: 10px;
+  font-family: SAOUI;
+  text-shadow: 0 0 6px #FFFF55, 0 0 9px #FF3333;
+  color: #A52A2A;
+}
+
+/* a glimpse */
+#glimpse{
+  background-color: #FAEBD7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("hundredHorse.jpg");
+  background-position: 84.3%;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#glimpseGeneralContent{
+  background: rgba(	255,228,196,0.8);
+  width: 100%;
+  min-width: 300px;
+  margin: auto;
+  height:80%;
+}
+
+.glimpic{
+  width: 25%;
+  height:100%;
+  position: relative;
+}
+
+#glim1{
+  background-image: url("qinChariot.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#glim2{
+  background-image: url("SO.jpg");
+  background-size: 150%;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#glim3{
+  background-image: url("CAPT.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#glim4{
+  background-image: url("Spot.jpg");
+  /* background-size: 100%; */
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.War, .Transportation, .Gift, .Leisure{
+  /* background-color: rgba(120,120,120,0.5); */
+  position: absolute;
+  color: #fff
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 4px 20px 4px 15px;
+  opacity: 0;
+  transition: all 300ms ease-out;
+  font-size: 30px;
+  word-spacing: 5px;
+  font-family: SAOUI;
+}
+
+.War{
+  /* color:silver; */
+  text-shadow: 0 0 6px red;
+}
+
+.Transportation{
+  text-shadow: 0 0 6px brown;
+}
+
+.Gift{
+  text-shadow: 0 0 6px silver;
+}
+
+.Leisure{
+  text-shadow: 0 0 6px silver;
+}
+
+#glim1:hover .War{
+  opacity: 1;
+}
+
+#glim2:hover .Transportation{
+  opacity: 1;
+}
+
+#glim3:hover .Gift{
+  opacity: 1;
+}
+
+#glim4:hover .Leisure{
+  opacity: 1;
+}
+
+/* transition2 */
+#transition2{
+  background-color: #FAEBD7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("hundredHorse.jpg");
+  background-position: 112.5%;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#transition2:hover .transition2Word{
+  opacity: 1;
+}
+
+.transition2Word{
+  background-color: rgba(	240,230,140,0.2);
+  position: absolute;
+  color: #fff
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 4px 20px 4px 15px;
+  opacity: 0;
+  transition: all 300ms ease-out;
+  font-size: 50px;
+  word-spacing: 10px;
+  font-family: SAOUI;
+  text-shadow: 0 0 6px #FFFF55, 0 0 9px #FF3333;
+  color: #A52A2A;
+}
+
+/* before tang */
+#luo {
+  position: absolute;
+  transform: translate(80%, 50%) scale(3);
+}
+
+#luoContent{
+  background: rgba(	255,228,196,0.5);
+  width: 80%;
+  min-width: 300px;
+  margin: auto;
+}
+
+#luoTitle{
+  text-align: center;
+}
+
+/* transition3 */
+#transition3{
+  background-color: #FAEBD7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("hundredHorse.jpg");
+  background-position: 12.5%;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#transition3:hover .transition3Word{
+  opacity: 1;
+}
+
+.transition3Word{
+  background-color: rgba(	240,230,140,0.2);
+  position: absolute;
+  color: #fff
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 4px 20px 4px 15px;
+  opacity: 0;
+  transition: all 300ms ease-out;
+  font-size: 50px;
+  word-spacing: 10px;
+  font-family: SAOUI;
+  text-shadow: 0 0 6px #FFFF55, 0 0 9px #FF3333;
+  color: #A52A2A;
+}
+
+/* tangsong */
+#zyb {
+  position: absolute;
+  transform: translate(36%, 20%) scale(1.8);
+}
+
+#tangsongBody{
+  /* display: relative; */
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  position: absolute;
+
+}
+
+#tangsongContent{
+  background: rgba(	255,228,196,0.5);
+  width: 90%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  /* padding: 4px 20px 4px 15px; */
+  position: absolute;
+}
+
+/* transition4 */
+#transition4{
+  background-color: #FAEBD7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("hundredHorse.jpg");
+  background-position: 40.8%;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#transition4:hover .transition4Word{
+  opacity: 1;
+}
+
+.transition4Word{
+  background-color: rgba(	240,230,140,0.2);
+  position: absolute;
+  color: #fff
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 4px 20px 4px 15px;
+  opacity: 0;
+  transition: all 300ms ease-out;
+  font-size: 50px;
+  word-spacing: 10px;
+  font-family: SAOUI;
+  text-shadow: 0 0 6px #FFFF55, 0 0 9px #FF3333;
+  color: #A52A2A;
+}
+
+/* yuan */
+#mengfu {
+  position: absolute;
+  transform: translate(0%, -10%) scale(1);
+}
+
+#yuanBody{
+  /* display: relative; */
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  position: absolute;
+
+}
+
+#yuanContent{
+  background: rgba(	255,228,196,0.5);
+  width: 90%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  /* padding: 4px 20px 4px 15px; */
+  position: absolute;
+}
+
+/* transition5 */
+#transition5{
+  background-color: #FAEBD7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("hundredHorse.jpg");
+  background-position: 69%;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#transition5:hover .transition5Word{
+  opacity: 1;
+}
+
+.transition5Word{
+  background-color: rgba(	240,230,140,0.2);
+  position: absolute;
+  color: #fff
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 4px 20px 4px 15px;
+  opacity: 0;
+  transition: all 300ms ease-out;
+  font-size: 50px;
+  word-spacing: 10px;
+  font-family: SAOUI;
+  text-shadow: 0 0 6px #FFFF55, 0 0 9px #FF3333;
+  color: #A52A2A;
+}
+
+/* Qing */
+#qianlong {
+  position: absolute;
+  transform: translate(10%, -10%) scale(1.2);
+}
+
+#qingBody{
+  /* display: relative; */
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  position: absolute;
+
+}
+
+#qingContent{
+  background: rgba(	255,228,196,0.5);
+  width: 90%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  /* padding: 4px 20px 4px 15px; */
+  position: absolute;
+}
+
+/* reasons */
+#reason{
+  background-color: #FAEBD7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("hundredHorse.jpg");
+  background-position: 97.1%;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#reasonGeneralContent{
+  background: rgba(	255,228,196,0.8);
+  width: 60%;
+  min-width: 300px;
+  margin: auto;
+  height:80%;
+}
+
+.resonpic{
+  width: 100%;
+  height:100%;
+  position: relative;
+  background-image: url("bole.jpeg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.reasonWord{
+  background-color: rgba(255,228,196,0.8);
+  position: absolute;
+  color: #fff
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 4px 20px 4px 15px;
+  opacity: 0;
+  transition: all 300ms ease-out;
+  font-size: 30px;
+  word-spacing: 5px;
+  font-family: SAOUI;
+  color:#A52A2A;
+  text-shadow: 0 0 6px #FFFF55, 0 0 9px #FF3333;
+}
+
+.resonpic:hover .reasonWord{
+  opacity: 1;
+}
+
+/* conclusion */
+#conclusion{
+  background-color: #FAEBD7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("hundredHorse.jpg");
+  background-position: 125.25%;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#conclusionGeneralContent{
+  background: rgba(	255,228,196,0.8);
+  width: 60%;
+  min-width: 300px;
+  margin: auto;
+  height:80%;
+}
+
+.conclusionpic{
+  width: 100%;
+  height:100%;
+  position: relative;
+  background-image: url("xubeihong.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.conclusionWord{
+  background-color: rgba(255,228,196,0.8);
+  position: absolute;
+  color: #fff
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 4px 20px 4px 15px;
+  opacity: 0;
+  transition: all 300ms ease-out;
+  font-size: 30px;
+  word-spacing: 5px;
+  font-family: SAOUI;
+  color:#A52A2A;
+  text-shadow: 0 0 6px #FFFF55, 0 0 9px #FF3333;
+}
+
+.conclusionpic:hover .conclusionWord{
+  opacity: 1;
+}
+
+/* the end */
+.captionend{
+  /* position: absolute; */
+  font-size: 80px;
+  font-family: "LiGothic", "FangSong", Arial, serif;
+  opacity: 1;
+  z-index: 1;
+  display: flex;
+  /* justify-content: center; */
+  text-align: center;
+  /* vertical-align: middle; */
+  text-decoration: none;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  text-shadow: 0 0 6px gold, 0 0 9px SandyBrown;
+  color: #A52A2A;
+}
+
+.captionend2{
+  /* position: absolute; */
+  font-size: 25px;
+  font-family: "LiGothic", "FangSong", Arial, serif;
+  opacity: 1;
+  z-index: 1;
+  display: flex;
+  /* justify-content: center; */
+  text-align: center;
+  /* vertical-align: middle; */
+  text-decoration: none;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  text-shadow: 0 0 6px gold, 0 0 9px SandyBrown;
+  color: #A52A2A;
+}
+
+#end {
+  background-color: #FAEBD7;
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+  align-items: center;
+  background-image: url("hundredHorse.jpg");
+  background-position: 0%;
+}
+
+/* zoombox1 */
+.zoombox{
+  display: none;
+  background: rgba(0, 0, 0, .8);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+}
+
+.zoombox:target{
+  display: flex;
+}
+
+.box-dialog{
+  display: contents;
+}
+
+.box-content{
+  background: rgba(255,255,255,0.5);
+  width: 60%;
+  min-width: 300px;
+  margin: auto;
+}
+
+.box-header{
+  background: rgba(180,180,180,0.5);
+  padding: 1rem;
+  position: relative;
+}
+
+.box-title{
+  margin: 0;
+  font-size: 20px;
+  font-family: SAOUI;
+}
+
+.box-close{
+  color: #fff;
+  text-decoration: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
+}
+
+/* .box-image{
+display:block;
+margin: 1rem auto;
+} */
+
+.box-text{
+  padding: 1rem 1rem;
+  line-height: 1.5;
+  font-size: 20px;
+  font-family: SAOUI;
+
+}
+
+.caption{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding: 4px 20px 4px 15px;
+  font-size: 40px;
+  font-family: SAOUI;
+  opacity: 0;
+  transition: all 300ms ease-out;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.vidcaption{
+  position: relative;
+  font-size: 20px;
+  font-family: SAOUI;
+  opacity: 0;
+  transition: all 300ms ease-out;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#profile{
+  width: 100px;
+  height: auto;
+  margin: 0 100px;
+}
+
+a.box-trigger{
+  text-decoration: none;
+  text-shadow: 0 0 6px gold, 0 0 9px SandyBrown;
+}
+
+a.box-trigger:link{
+  color: DarkGoldenRod;
+}
+
+a.box-trigger:visited{
+  color: DarkGoldenRod;
+}
+
+a.box-trigger:hover{
+  color: rgba(250,80,80,0.9);
+}
+
+a.box-trigger:active{
+  color: rgb(200,40,40);
+}
+
+a#close{
+  text-decoration: none;
+  text-shadow: 0 0 6px black, 0 0 9px lightgrey;
+}
+
+a#close:link{
+  color: lightgrey;
+}
+
+a#close:visited{
+  color: lightgrey;
+}
+
+a#close:hover{
+  color: black;
+}
+
+.picture:hover .caption {
+    opacity: 1;
+}
+
+.vidone:hover .vidcaption {
+    opacity: 1;
+}
+
+.vidtwo:hover .vidcaption {
+    opacity: 1;
+}
+
+/* zoombox2 */
+.zoombox2{
+  display: none;
+  background: rgba(0, 0, 0, .8);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+}
+
+.zoombox2:target{
+  display: flex;
+}
+
+.box-dialog2{
+  display: contents;
+}
+
+.box-content2{
+  background: rgba(255,255,255,0.5);
+  width: 60%;
+  min-width: 300px;
+  margin: auto;
+}
+
+.box-header2{
+  background: rgba(180,180,180,0.5);
+  padding: 1rem;
+  position: relative;
+}
+
+.box-title2{
+  margin: 0;
+  font-size: 20px;
+  font-family: SAOUI;
+}
+
+.box-close2{
+  color: #fff;
+  text-decoration: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
+}
+
+.box-image2{
+  display: flex;
+  justify-content: center;
+}
+
+#video1{
+  margin-top: 0;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+#video2{
+  margin-top: 0;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.box-text2{
+  padding: 1rem 1rem;
+  line-height: 1.5;
+  font-size: 20px;
+  font-family: SAOUI;
+
+}
+
+/* zoombox3 */
+.zoombox3{
+  display: none;
+  background: rgba(0, 0, 0, .8);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+}
+
+.zoombox3:target{
+  display: flex;
+}
+
+.box-dialog3{
+  display: contents;
+  height: 100%;
+}
+
+.box-content3{
+  background: rgba(255,255,255,0.5);
+  width: 60%;
+  min-width: 300px;
+  margin: auto;
+  height:80%;
+}
+
+.box-header3{
+  background: rgba(184,134,11,0.6);
+  padding: 1rem;
+  position: relative;
+  height: 7%;
+}
+
+.box-title3{
+  margin: 0;
+  font-size: 28px;
+  font-family: SAOUI;
+  color: rgba(139,0,0,0.6);
+}
+
+.box-close3{
+  color: #fff;
+  text-decoration: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
+}
+
+.box-image3{
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.box-body3{
+  height: 93%;
+  width: 100%;
+}
+
+.gamepic{
+  width: 33.33%;
+  height:100%;
+  position: relative;
+}
+
+#gameone{
+  background-image: url("persona5.png");
+  background-position: center;
+}
+
+#gametwo{
+  background-image: url("maria2.jpg");
+  background-position: center;
+}
+
+#gamethree{
+  background-image: url("nier2.jpg");
+  background-position: 50% 20%;
+}
+
+.persona, .bloodborne, .NieR{
+  background-color: rgba(120,120,120,0.5);
+  position: absolute;
+  color: #fff
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 4px 20px 4px 15px;
+  opacity: 0;
+  transition: all 300ms ease-out;
+  font-size: 30px;
+  font-family: SAOUI;
+}
+
+.persona{
+  /* color:silver; */
+  text-shadow: 0 0 6px red;
+}
+
+.bloodborne{
+  text-shadow: 0 0 6px brown;
+}
+
+.NieR{
+  text-shadow: 0 0 6px silver;
+}
+
+#gameone:hover .persona{
+  opacity: 1;
+}
+
+#gametwo:hover .bloodborne{
+  opacity: 1;
+}
+
+#gamethree:hover .NieR{
+  opacity: 1;
+}
+
+.box-text3{
+  padding: 1rem 1rem;
+  line-height: 1.5;
+  font-size: 20px;
+  font-family: SAOUI;
+
+}
+
+/* zoombox4 */
+.zoombox4{
+  display: none;
+  background: rgba(0, 0, 0, .8);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+}
+
+.zoombox4:target{
+  display: flex;
+}
+
+.box-dialog4{
+  display: contents;
+  width:60%;
+  height: 60%;
+}
+
+.box-content4{
+  background: rgba(	255,228,196,0.5);
+  width: 60%;
+  min-width: 300px;
+  margin: auto;
+}
+
+.box-header4{
+  background: rgba(184,134,11,0.6);
+  padding: 1rem;
+  position: relative;
+}
+
+.box-title4{
+  margin: 0;
+  font-size: 28px;
+  font-family: SAOUI;
+  color: rgba(139,0,0,0.6);
+}
+
+.box-close4{
+  color: #fff;
+  text-decoration: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
+}
+
+/* .box-image{
+display:block;
+margin: 1rem auto;
+} */
+
+.box-text4{
+  padding: 1rem 1rem;
+  line-height: 1.5;
+  font-size: 20px;
+  font-family: SAOUI;
+  color: rgba(128,0,0,1);
+  word-spacing: 5px;
+}
+
+.box-body4{
+  height: 93%;
+  width: 100%;
+}
+
+.gameintro{
+  display: none;
+  background: rgba(0, 0, 0, .8);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+}
+
+.imageprofile{
+  width:40%;
+  margin-left: 30%;
+}
+
+.profilepic{
+  width:100%;
+}
+
+.friendpage{
+  text-decoration: none;
+  color: black;
+}
+
+a.friendpage:hover{
+  color: white;
+}
+
+a.friendpage:visited{
+  color: violet;
+}
+
+a.friendpage:link{
+  color: black;
+}
+
+a.friendpage:active{
+  color: red;
+}
